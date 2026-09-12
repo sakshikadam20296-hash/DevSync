@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Daily Work Log - DevSync
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/daily-log.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ===================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                D
+            </div>
+
+
+            <div>
+
+                <h2>
+                    DevSync
+                </h2>
+
+                <span>
+                    Employee Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================= -->
+
+        <nav class="navigation">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="/dashboard"
+                class="nav-item">
+
+                <span>
+                    ⌂
+                </span>
+
+                Dashboard
+
+            </a>
+
+
+
+            <!-- MY TASKS -->
+
+            <a
+                href="/tasks"
+                class="nav-item">
+
+                <span>
+                    ✓
+                </span>
+
+                My Tasks
+
+            </a>
+
+
+
+            <!-- WORK SESSIONS -->
+
+            <a
+                href="/work-sessions"
+                class="nav-item">
+
+                <span>
+                    ⏱
+                </span>
+
+                Work Sessions
+
+            </a>
+
+
+
+            <!-- DAILY LOG -->
+
+            <a
+                href="/daily-log"
+                class="nav-item active">
+
+                <span>
+                    📝
+                </span>
+
+                Daily Log
+
+            </a>
+
+
+
+            <!-- PRODUCTIVITY -->
+
+            <a
+                href="/productivity"
+                class="nav-item">
+
+                <span>
+                    📊
+                </span>
+
+                Productivity
+
+            </a>
+
+
+
+            <!-- NOTIFICATIONS -->
+
+            <a
+                href="/notifications"
+                class="nav-item">
+
+                <span>
+                    🔔
+                </span>
+
+                Notifications
+
+            </a>
+
+
+
+            <!-- SETTINGS -->
+
+            <a
+                href="/settings"
+                class="nav-item">
+
+                <span>
+                    ⚙
+                </span>
+
+                Settings
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =================================================
+             SIDEBAR BOTTOM
+        ================================================= -->
+
+        <div class="sidebar-bottom">
+
+
+            <!-- LOGOUT -->
+
+            <button
+                type="button"
+                class="logout-btn"
+                onclick="logout()">
+
+                <span>
+                    ↪
+                </span>
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================= -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1>
+                    Daily Work Log
+                </h1>
+
+
+                <p>
+                    Record and review your daily work activities.
+                </p>
+
+            </div>
+
+
+
+            <!-- PROFILE -->
+
+            <div class="profile">
+
+
+                <div class="profile-info">
+
+
+                    <strong id="username">
+                        Employee
+                    </strong>
+
+
+                    <span>
+                        Employee
+                    </span>
+
+
+                </div>
+
+
+
+                <div
+                    class="avatar"
+                    id="avatar">
+
+                    E
+
+                </div>
+
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================= -->
+
+        <section class="page-content">
+
+
+            <!-- =================================================
+                 TODAY SUMMARY
+            ================================================= -->
+
+            <div class="summary-card">
+
+
+                <div class="summary-icon">
+                    📝
+                </div>
+
+
+                <div>
+
+
+                    <span class="summary-label">
+                        Today's Log
+                    </span>
+
+
+                    <h2 id="todayDate">
+                        Loading...
+                    </h2>
+
+
+                    <p>
+                        Keep your daily work record updated.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOG FORM
+            ================================================= -->
+
+            <div class="log-card">
+
+
+                <!-- CARD HEADER -->
+
+                <div class="card-header">
+
+
+                    <div>
+
+
+                        <h2>
+                            Today's Work Log
+                        </h2>
+
+
+                        <p>
+                            Describe what you worked on today.
+                        </p>
+
+
+                    </div>
+
+
+                    <span
+                        class="save-status"
+                        id="saveStatus">
+
+                        Not saved
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     WORK SUMMARY
+                ================================================= -->
+
+                <div class="form-group">
+
+
+                    <label for="workSummary">
+
+                        What did you work on today?
+
+                    </label>
+
+
+                    <textarea
+                        id="workSummary"
+                        placeholder="Example: Worked on Employee Dashboard, implemented work session tracking and fixed UI issues..."
+                    ></textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ACHIEVEMENTS
+                ================================================= -->
+
+                <div class="form-group">
+
+
+                    <label for="achievements">
+
+                        Today's Achievements
+
+                    </label>
+
+
+                    <textarea
+                        id="achievements"
+                        placeholder="Example: Completed dashboard module and successfully tested login functionality..."
+                    ></textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CHALLENGES
+                ================================================= -->
+
+                <div class="form-group">
+
+
+                    <label for="challenges">
+
+                        Challenges / Issues
+
+                    </label>
+
+
+                    <textarea
+                        id="challenges"
+                        placeholder="Example: Faced an API connection issue while testing work sessions..."
+                    ></textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     NEXT PLAN
+                ================================================= -->
+
+                <div class="form-group">
+
+
+                    <label for="nextPlan">
+
+                        Plan for Next Working Day
+
+                    </label>
+
+
+                    <textarea
+                        id="nextPlan"
+                        placeholder="Example: Complete productivity analytics and connect the frontend with backend APIs..."
+                    ></textarea>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     WORK STATUS
+                ================================================= -->
+
+                <div class="form-group">
+
+
+                    <label>
+                        Work Status
+                    </label>
+
+
+                    <div class="status-options">
+
+
+                        <!-- EXCELLENT -->
+
+                        <label class="status-option">
+
+
+                            <input
+                                type="radio"
+                                name="workStatus"
+                                value="Excellent"
+                            >
+
+
+                            <span>
+                                🚀 Excellent
+                            </span>
+
+
+                        </label>
+
+
+
+                        <!-- GOOD -->
+
+                        <label class="status-option">
+
+
+                            <input
+                                type="radio"
+                                name="workStatus"
+                                value="Good"
+                            >
+
+
+                            <span>
+                                🙂 Good
+                            </span>
+
+
+                        </label>
+
+
+
+                        <!-- AVERAGE -->
+
+                        <label class="status-option">
+
+
+                            <input
+                                type="radio"
+                                name="workStatus"
+                                value="Average"
+                            >
+
+
+                            <span>
+                                😐 Average
+                            </span>
+
+
+                        </label>
+
+
+
+                        <!-- DIFFICULT -->
+
+                        <label class="status-option">
+
+
+                            <input
+                                type="radio"
+                                name="workStatus"
+                                value="Difficult"
+                            >
+
+
+                            <span>
+                                😓 Difficult
+                            </span>
+
+
+                        </label>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BUTTONS
+                ================================================= -->
+
+                <div class="form-actions">
+
+
+                    <!-- CLEAR -->
+
+                    <button
+                        type="button"
+                        class="clear-btn"
+                        onclick="clearLog()">
+
+                        Clear
+
+                    </button>
+
+
+
+                    <!-- SAVE -->
+
+                    <button
+                        type="button"
+                        class="save-btn"
+                        onclick="saveLog()">
+
+                        💾 Save Daily Log
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RECENT LOGS
+            ================================================= -->
+
+            <div class="recent-card">
+
+
+                <div class="card-header">
+
+
+                    <div>
+
+
+                        <h2>
+                            Recent Work Logs
+                        </h2>
+
+
+                        <p>
+
+                            Your previously saved daily records.
+
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div
+                    id="recentLogs"
+                    class="recent-logs">
+
+                    <!-- Logs will appear here -->
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================= -->
+
+        <footer>
+
+            DevSync Employee Productivity System
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script src="/static/daily-log.js"></script>
+
+
+</body>
+
+</html>

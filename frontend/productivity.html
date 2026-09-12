@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevSync - Productivity Analytics</title>
+
+    <link rel="stylesheet" href="/static/productivity.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                D
+            </div>
+
+            <div>
+                <h2>DevSync</h2>
+                <span>Employee Portal</span>
+            </div>
+
+        </div>
+
+
+        <div class="navigation">
+
+            <a href="/dashboard" class="nav-item">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="/tasks" class="nav-item">
+                <span>📋</span>
+                Tasks
+            </a>
+
+            <a href="/work-sessions" class="nav-item">
+                <span>⏱️</span>
+                Work Sessions
+            </a>
+
+            <a href="/daily-log" class="nav-item">
+                <span>📝</span>
+                Daily Log
+            </a>
+
+            <a href="/productivity" class="nav-item active">
+                <span>📊</span>
+                Productivity
+            </a>
+
+            <a href="/manager" class="nav-item">
+                <span>👨‍💼</span>
+                Manager Dashboard
+            </a>
+
+            <a href="/notifications" class="nav-item">
+                <span>🔔</span>
+                Notifications
+            </a>
+
+            <a href="/settings" class="nav-item">
+                <span>⚙️</span>
+                Settings
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <button class="logout-btn" onclick="logout()">
+                <span>🚪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Productivity Analytics</h1>
+
+                <p>
+                    Analyze your work performance and productivity
+                </p>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="profile-info">
+
+                    <strong>Sakshi</strong>
+
+                    <span>Employee</span>
+
+                </div>
+
+                <div class="avatar">
+                    S
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAGE -->
+
+        <div class="page-content">
+
+
+            <!-- HERO -->
+
+            <div class="hero-card">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        Overall Productivity
+                    </span>
+
+                    <h2 id="heroProductivity">
+                        0%
+                    </h2>
+
+                    <p>
+                        Keep improving your daily performance 🚀
+                    </p>
+
+                </div>
+
+
+                <div class="progress-circle" id="progressCircle">
+
+                    <div class="circle-inner">
+
+                        <strong id="circleValue">
+                            0%
+                        </strong>
+
+                        <span>
+                            Productivity
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                    <div>
+
+                        <span>Total Tasks</span>
+
+                        <h3 id="totalTasks">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✅
+                    </div>
+
+                    <div>
+
+                        <span>Completed Tasks</span>
+
+                        <h3 id="completedTasks">
+                            0
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⏱️
+                    </div>
+
+                    <div>
+
+                        <span>Working Hours</span>
+
+                        <h3 id="workingHours">
+                            0h 0m
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        📈
+                    </div>
+
+                    <div>
+
+                        <span>Productivity</span>
+
+                        <h3 id="productivity">
+                            0%
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT GRID -->
+
+            <div class="content-grid">
+
+
+                <!-- PERFORMANCE -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>Performance Overview</h2>
+
+                            <p>
+                                Your current work performance
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="performance-item">
+
+                        <div class="performance-top">
+
+                            <span>
+                                Task Completion
+                            </span>
+
+                            <strong id="taskPercentage">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="taskProgress">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="performance-item">
+
+                        <div class="performance-top">
+
+                            <span>
+                                Overall Productivity
+                            </span>
+
+                            <strong id="productivityPercentage">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="productivityProgress">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="performance-item">
+
+                        <div class="performance-top">
+
+                            <span>
+                                Work Consistency
+                            </span>
+
+                            <strong id="consistencyPercentage">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <div
+                                class="progress-fill"
+                                id="consistencyProgress">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INSIGHTS -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>Productivity Insights</h2>
+
+                            <p>
+                                Helpful suggestions based on your work
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="insight">
+
+                        <div class="insight-icon">
+                            🎯
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Task Completion
+                            </strong>
+
+                            <p id="taskInsight">
+                                Complete more tasks to improve your productivity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="insight">
+
+                        <div class="insight-icon">
+                            ⏰
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Work Time
+                            </strong>
+
+                            <p id="timeInsight">
+                                Track your working hours regularly.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="insight">
+
+                        <div class="insight-icon">
+                            🚀
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Keep Improving
+                            </strong>
+
+                            <p id="productivityInsight">
+                                Consistent work can improve your productivity.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DAILY TARGET -->
+
+            <div class="card daily-target">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>Daily Productivity Target</h2>
+
+                        <p>
+                            Target based on completed tasks
+                        </p>
+
+                    </div>
+
+                    <strong id="targetText">
+                        0 / 5 Tasks
+                    </strong>
+
+                </div>
+
+
+                <div class="large-progress">
+
+                    <div
+                        class="large-progress-fill"
+                        id="dailyProgress">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div id="message"></div>
+
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            DevSync © 2026 | Employee Productivity Monitoring System
+
+        </footer>
+
+    </div>
+
+
+    <script src="/static/productivity.js"></script>
+
+</body>
+
+</html>

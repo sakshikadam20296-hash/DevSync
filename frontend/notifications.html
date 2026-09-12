@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications - DevSync</title>
+
+    <link rel="stylesheet" href="/static/notifications.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">D</div>
+
+            <div>
+                <h2>DevSync</h2>
+                <span>Employee Portal</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="/dashboard" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/tasks" class="nav-item">
+                <span>✓</span>
+                My Tasks
+            </a>
+
+            <a href="/work-sessions" class="nav-item">
+                <span>⏱</span>
+                Work Sessions
+            </a>
+
+            <a href="/daily-log" class="nav-item">
+                <span>📝</span>
+                Daily Log
+            </a>
+
+            <a href="/productivity" class="nav-item">
+                <span>📊</span>
+                Productivity
+            </a>
+
+            <a href="/notifications" class="nav-item active">
+                <span>🔔</span>
+                Notifications
+                <span id="notificationBadge" class="notification-badge">0</span>
+            </a>
+
+            <a href="/settings" class="nav-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="logout-btn" onclick="logout()">
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Notifications</h1>
+
+                <p>
+                    Stay updated with your work activities.
+                </p>
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-info">
+
+                    <strong id="username">
+                        Employee
+                    </strong>
+
+                    <span>
+                        Employee
+                    </span>
+
+                </div>
+
+                <div class="avatar" id="avatar">
+                    E
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <section class="page-content">
+
+
+            <!-- HEADER CARD -->
+            <div class="notification-header">
+
+                <div>
+
+                    <span class="header-label">
+                        Notification Center
+                    </span>
+
+                    <h2>
+                        Recent Updates
+                    </h2>
+
+                    <p>
+                        Important alerts and activity updates from DevSync.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="mark-read-btn"
+                    onclick="markAllRead()"
+                >
+                    ✓ Mark all as read
+                </button>
+
+            </div>
+
+
+            <!-- FILTERS -->
+            <div class="filters">
+
+                <button
+                    class="filter active"
+                    onclick="filterNotifications('all', this)"
+                >
+                    All
+                </button>
+
+                <button
+                    class="filter"
+                    onclick="filterNotifications('unread', this)"
+                >
+                    Unread
+                </button>
+
+                <button
+                    class="filter"
+                    onclick="filterNotifications('task', this)"
+                >
+                    Tasks
+                </button>
+
+                <button
+                    class="filter"
+                    onclick="filterNotifications('work', this)"
+                >
+                    Work
+                </button>
+
+                <button
+                    class="filter"
+                    onclick="filterNotifications('productivity', this)"
+                >
+                    Productivity
+                </button>
+
+            </div>
+
+
+            <!-- NOTIFICATION LIST -->
+            <div class="notification-card">
+
+                <div id="notificationList">
+
+                    <!-- Notifications will appear here -->
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <footer>
+            DevSync Employee Productivity System
+        </footer>
+
+    </main>
+
+
+    <script src="/static/notifications.js"></script>
+
+</body>
+
+</html>

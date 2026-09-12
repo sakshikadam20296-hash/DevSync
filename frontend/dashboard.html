@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevSync - Dashboard</title>
+
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+        <div class="logo">
+
+            <div class="logo-icon">
+                D
+            </div>
+
+            <div>
+                <h2>DevSync</h2>
+                <span>Work Intelligence</span>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <nav>
+
+            <a href="/dashboard" class="nav-item active">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/tasks" class="nav-item">
+                <span>✓</span>
+                My Tasks
+            </a>
+
+            <a href="/work-sessions" class="nav-item">
+                <span>⏱</span>
+                Work Sessions
+            </a>
+
+            <a href="/daily-log" class="nav-item">
+                <span>📝</span>
+                Daily Log
+            </a>
+
+            <a href="/productivity" class="nav-item">
+                <span>📊</span>
+                Productivity
+            </a>
+
+            <a href="/notifications" class="nav-item">
+                <span>🔔</span>
+                Notifications
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <a href="/settings" class="nav-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+            <button
+                class="logout-btn"
+                onclick="logout()">
+
+                <span>↪</span>
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="main">
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <div>
+
+                <div class="small-title">
+                    EMPLOYEE DASHBOARD
+                </div>
+
+                <h1>
+                    Welcome back, <span id="username">Employee</span> 👋
+                </h1>
+
+            </div>
+
+
+            <div class="profile">
+
+                <a
+                    href="/notifications"
+                    class="notification"
+                    title="Notifications">
+
+                    🔔
+
+                    <span class="notification-dot"></span>
+
+                </a>
+
+
+                <div
+                    class="avatar"
+                    id="avatar">
+
+                    E
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WORK STATUS ================= -->
+
+        <section class="status-card">
+
+            <div class="status-left">
+
+                <div class="status-icon">
+                    💼
+                </div>
+
+                <div>
+
+                    <div class="status-label">
+                        CURRENT WORK STATUS
+                    </div>
+
+                    <h2 id="workStatus">
+                        Not Working
+                    </h2>
+
+                    <p id="statusMessage">
+                        Start your work session to begin tracking.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timer-area">
+
+                <div
+                    class="timer"
+                    id="timer">
+
+                    00:00:00
+
+                </div>
+
+
+                <div class="timer-buttons">
+
+                    <button
+                        id="startBtn"
+                        class="start-btn"
+                        onclick="startWork()">
+
+                        ▶ Start Work
+
+                    </button>
+
+
+                    <button
+                        id="breakBtn"
+                        class="break-btn"
+                        onclick="toggleBreak()"
+                        disabled>
+
+                        ☕ Break
+
+                    </button>
+
+
+                    <button
+                        id="endBtn"
+                        class="end-btn"
+                        onclick="endWork()"
+                        disabled>
+
+                        ■ End Work
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats-grid">
+
+
+            <!-- WORK HOURS -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Work Hours
+                    </span>
+
+                    <div class="stat-icon blue">
+                        ⏱
+                    </div>
+
+                </div>
+
+                <h2 id="hoursStat">
+                    0h 00m
+                </h2>
+
+                <p>
+                    Today's tracked time
+                </p>
+
+            </div>
+
+
+            <!-- COMPLETED TASKS -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Completed Tasks
+                    </span>
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                </div>
+
+                <h2 id="taskStat">
+                    0 / 5
+                </h2>
+
+                <p>
+                    Tasks completed today
+                </p>
+
+            </div>
+
+
+            <!-- PRODUCTIVITY -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Productivity
+                    </span>
+
+                    <div class="stat-icon purple">
+                        📊
+                    </div>
+
+                </div>
+
+                <h2 id="productivityStat">
+                    0%
+                </h2>
+
+                <p>
+                    Today's productivity score
+                </p>
+
+            </div>
+
+
+            <!-- BREAK TIME -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span>
+                        Break Time
+                    </span>
+
+                    <div class="stat-icon orange">
+                        ☕
+                    </div>
+
+                </div>
+
+                <h2 id="breakStat">
+                    0m
+                </h2>
+
+                <p>
+                    Total break duration
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TASKS + PRODUCTIVITY ================= -->
+
+        <section class="content-grid">
+
+
+            <!-- MY TASKS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            TODAY
+                        </div>
+
+                        <h2>
+                            My Tasks
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        class="add-task-btn"
+                        onclick="addTask()">
+
+                        + Add Task
+
+                    </button>
+
+                </div>
+
+
+                <div id="taskList">
+
+
+                    <!-- TASK 1 -->
+
+                    <div class="task">
+
+                        <input
+                            type="checkbox"
+                            onchange="completeTask(this)">
+
+                        <div class="task-info">
+
+                            <strong>
+                                Complete project documentation
+                            </strong>
+
+                            <span>
+                                Documentation
+                            </span>
+
+                        </div>
+
+                        <div class="priority high">
+                            High
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK 2 -->
+
+                    <div class="task">
+
+                        <input
+                            type="checkbox"
+                            onchange="completeTask(this)">
+
+                        <div class="task-info">
+
+                            <strong>
+                                Complete database module
+                            </strong>
+
+                            <span>
+                                Development
+                            </span>
+
+                        </div>
+
+                        <div class="priority high">
+                            High
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK 3 -->
+
+                    <div class="task">
+
+                        <input
+                            type="checkbox"
+                            onchange="completeTask(this)">
+
+                        <div class="task-info">
+
+                            <strong>
+                                Test application features
+                            </strong>
+
+                            <span>
+                                Testing
+                            </span>
+
+                        </div>
+
+                        <div class="priority medium">
+                            Medium
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK 4 -->
+
+                    <div class="task">
+
+                        <input
+                            type="checkbox"
+                            onchange="completeTask(this)">
+
+                        <div class="task-info">
+
+                            <strong>
+                                Update user interface
+                            </strong>
+
+                            <span>
+                                Design
+                            </span>
+
+                        </div>
+
+                        <div class="priority medium">
+                            Medium
+                        </div>
+
+                    </div>
+
+
+                    <!-- TASK 5 -->
+
+                    <div class="task">
+
+                        <input
+                            type="checkbox"
+                            onchange="completeTask(this)">
+
+                        <div class="task-info">
+
+                            <strong>
+                                Review today's work
+                            </strong>
+
+                            <span>
+                                Review
+                            </span>
+
+                        </div>
+
+                        <div class="priority low">
+                            Low
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCTIVITY -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <div class="section-label">
+                            PERFORMANCE
+                        </div>
+
+                        <h2>
+                            Productivity
+                        </h2>
+
+                    </div>
+
+                    <span class="today">
+                        Today
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="productivity-circle"
+                    id="productivityCircle">
+
+                    <div class="circle-inner">
+
+                        <strong>
+                            0%
+                        </strong>
+
+                        <span>
+                            Productivity
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="productivity-info">
+
+                    <div>
+
+                        <span>
+                            Focus Time
+                        </span>
+
+                        <strong id="focusTime">
+                            0h 00m
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Break Time
+                        </span>
+
+                        <strong id="breakTime">
+                            0m
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DAILY LOG ================= -->
+
+        <section class="panel daily-log">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <div class="section-label">
+                        WORK JOURNAL
+                    </div>
+
+                    <h2>
+                        Daily Work Log
+                    </h2>
+
+                </div>
+
+                <span class="today">
+                    Today
+                </span>
+
+            </div>
+
+
+            <textarea
+                id="workLog"
+                placeholder="Write what you worked on today..."></textarea>
+
+
+            <button
+                class="save-log-btn"
+                onclick="saveLog()">
+
+                Save Work Log
+
+            </button>
+
+
+            <div
+                class="log-message"
+                id="logMessage">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NOTIFICATIONS ================= -->
+
+        <section class="panel dashboard-notifications">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <div class="section-label">
+                        UPDATES
+                    </div>
+
+                    <h2>
+                        Recent Notifications
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="/notifications"
+                    class="view-link">
+
+                    View All
+
+                </a>
+
+            </div>
+
+
+            <div class="dashboard-notification-list">
+
+
+                <div class="dashboard-notification unread">
+
+                    <div class="dashboard-notification-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Task completed
+                        </strong>
+
+                        <p>
+                            Your assigned task was completed successfully.
+                        </p>
+
+                        <span>
+                            Today
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-notification">
+
+                    <div class="dashboard-notification-icon">
+                        ⏱
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Work session
+                        </strong>
+
+                        <p>
+                            Your working hours are being tracked.
+                        </p>
+
+                        <span>
+                            Today
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-notification">
+
+                    <div class="dashboard-notification-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Productivity updated
+                        </strong>
+
+                        <p>
+                            Your daily productivity analysis is available.
+                        </p>
+
+                        <span>
+                            Today
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+
+        <section class="panel dashboard-settings">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <div class="section-label">
+                        QUICK SETTINGS
+                    </div>
+
+                    <h2>
+                        Dashboard Settings
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="/settings"
+                    class="view-link">
+
+                    Manage
+
+                </a>
+
+            </div>
+
+
+            <div class="dashboard-settings-grid">
+
+
+                <div class="dashboard-setting">
+
+                    <div class="setting-icon">
+                        ⏱
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Daily Work Target
+                        </strong>
+
+                        <p>
+                            Track your daily working hours.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-setting">
+
+                    <div class="setting-icon">
+                        🔔
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Notifications
+                        </strong>
+
+                        <p>
+                            Manage work and task alerts.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-setting">
+
+                    <div class="setting-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Productivity Tracking
+                        </strong>
+
+                        <p>
+                            Monitor your daily performance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-setting">
+
+                    <div class="setting-icon">
+                        ⚙
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Account Settings
+                        </strong>
+
+                        <p>
+                            Update your DevSync preferences.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="summary-card">
+
+            <div>
+
+                <div class="section-label">
+                    TODAY'S SUMMARY
+                </div>
+
+                <h2>
+                    Keep up the good work! 🚀
+                </h2>
+
+                <p>
+                    Track your working hours, complete your
+                    tasks and maintain consistent productivity
+                    throughout the day.
+                </p>
+
+            </div>
+
+
+            <div class="summary-metrics">
+
+                <div>
+
+                    <strong id="summaryHours">
+                        0h
+                    </strong>
+
+                    <span>
+                        Work Hours
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="summaryTasks">
+                        0
+                    </strong>
+
+                    <span>
+                        Tasks
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="summaryProductivity">
+                        0%
+                    </strong>
+
+                    <span>
+                        Productivity
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            DevSync © 2026 | Employee Work Monitoring &
+            Productivity System
+
+        </footer>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="/static/dashboard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevSync - Employee Work Intelligence</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>&lt;/&gt;</span> Dev<span>Sync</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <div class="nav-buttons">
+
+            <button class="login-btn" onclick="openLogin()">
+                Login
+            </button>
+
+            <button class="signup-btn" onclick="openRegister()">
+                Get Started
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                🚀 Employee Work Intelligence Platform
+            </div>
+
+            <h1>
+                Work Smarter.
+                <span>Track Better.</span>
+            </h1>
+
+            <p>
+                DevSync is an employee work monitoring and productivity
+                platform that helps employees track their working hours,
+                tasks, breaks and daily progress while giving managers
+                clear productivity insights.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="openRegister()">
+                    Get Started →
+                </button>
+
+                <button
+                    class="secondary-btn"
+                    onclick="scrollToFeatures()">
+                    Explore Features
+                </button>
+
+            </div>
+
+
+            <div class="stats">
+
+                <div>
+                    <h3>Work Time</h3>
+                    <p>Track working hours</p>
+                </div>
+
+                <div>
+                    <h3>Tasks</h3>
+                    <p>Monitor daily work</p>
+                </div>
+
+                <div>
+                    <h3>Analytics</h3>
+                    <p>Measure productivity</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= DASHBOARD PREVIEW ================= -->
+
+        <div class="dashboard-wrapper">
+
+            <div class="dashboard">
+
+                <div class="dash-top">
+
+                    <div class="dash-dots">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+
+                    <span>
+                        DevSync Employee Dashboard
+                    </span>
+
+                </div>
+
+
+                <div class="dash-body">
+
+                    <!-- SIDEBAR -->
+
+                    <aside>
+
+                        <div class="side-logo">
+                            &lt;/&gt;
+                        </div>
+
+                        <div class="side-item active">
+                            🏠 Dashboard
+                        </div>
+
+                        <div class="side-item">
+                            ✓ My Tasks
+                        </div>
+
+                        <div class="side-item">
+                            ⏱ Work Sessions
+                        </div>
+
+                        <div class="side-item">
+                            📋 Daily Work Log
+                        </div>
+
+                        <div class="side-item">
+                            📊 Productivity
+                        </div>
+
+                        <div class="side-item">
+                            🔔 Notifications
+                        </div>
+
+                    </aside>
+
+
+                    <!-- DASHBOARD MAIN -->
+
+                    <main class="dashboard-main">
+
+                        <div class="welcome">
+
+                            <div>
+
+                                <small>
+                                    Good morning 👋
+                                </small>
+
+                                <h2>
+                                    Welcome to DevSync
+                                </h2>
+
+                            </div>
+
+                            <div class="profile-circle">
+                                S
+                            </div>
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <div class="mini-card">
+
+                            <span>
+                                Work Status
+                            </span>
+
+                            <strong>
+                                🟢 Working
+                            </strong>
+
+                            <small>
+                                Session active
+                            </small>
+
+                        </div>
+
+
+                        <!-- STATS -->
+
+                        <div class="cards">
+
+                            <div class="mini-card">
+
+                                <span>
+                                    Working Hours
+                                </span>
+
+                                <strong>
+                                    6h 24m
+                                </strong>
+
+                                <small>
+                                    Today's work
+                                </small>
+
+                            </div>
+
+
+                            <div class="mini-card">
+
+                                <span>
+                                    Tasks Completed
+                                </span>
+
+                                <strong>
+                                    8 / 10
+                                </strong>
+
+                                <small>
+                                    Today's tasks
+                                </small>
+
+                            </div>
+
+
+                            <div class="mini-card">
+
+                                <span>
+                                    Productivity
+                                </span>
+
+                                <strong>
+                                    82%
+                                </strong>
+
+                                <small>
+                                    Excellent progress
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- WORK SESSION -->
+
+                        <div class="project-box">
+
+                            <div class="project-header">
+
+                                <h3>
+                                    Current Work Session
+                                </h3>
+
+                                <span>
+                                    Active
+                                </span>
+
+                            </div>
+
+
+                            <div class="project-row">
+
+                                <div class="project-icon purple">
+                                    ⏱
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Today's Work Session
+                                    </strong>
+
+                                    <p>
+                                        Start: 09:30 AM
+                                    </p>
+
+                                </div>
+
+
+                                <div class="progress">
+
+                                    <span>
+                                        82%
+                                    </span>
+
+                                    <div>
+                                        <i
+                                            style="width:82%">
+                                        </i>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="project-row">
+
+                                <div class="project-icon blue">
+                                    ✓
+                                </div>
+
+                                <div>
+
+                                    <strong>
+                                        Today's Tasks
+                                    </strong>
+
+                                    <p>
+                                        8 of 10 tasks completed
+                                    </p>
+
+                                </div>
+
+
+                                <div class="progress">
+
+                                    <span>
+                                        80%
+                                    </span>
+
+                                    <div>
+                                        <i
+                                            style="width:80%">
+                                        </i>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </main>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section
+        id="features"
+        class="features-section">
+
+        <div class="section-heading">
+
+            <div class="badge">
+                ⚡ Powerful Features
+            </div>
+
+            <h2>
+                Everything needed for
+                <span>productive work.</span>
+            </h2>
+
+            <p>
+                DevSync combines work tracking, task management,
+                productivity analytics and employee monitoring
+                into one unified platform.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <!-- FEATURE 1 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple-icon">
+                    ⏱
+                </div>
+
+                <h3>
+                    Work Time Tracking
+                </h3>
+
+                <p>
+                    Track employee working hours from the
+                    beginning to the end of every work session.
+                </p>
+
+                <a href="/work-sessions">
+                    Track Work →
+                </a>
+
+            </div>
+
+
+            <!-- FEATURE 2 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    Task Management
+                </h3>
+
+                <p>
+                    Create tasks, set priorities and monitor
+                    how much work employees complete each day.
+                </p>
+
+                <a href="/tasks">
+                    Manage Tasks →
+                </a>
+
+            </div>
+
+
+            <!-- FEATURE 3 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon green-icon">
+                    ☕
+                </div>
+
+                <h3>
+                    Break Tracking
+                </h3>
+
+                <p>
+                    Record break duration and understand the
+                    balance between focused work and break time.
+                </p>
+
+                <a href="/work-sessions">
+                    Track Breaks →
+                </a>
+
+            </div>
+
+
+            <!-- FEATURE 4 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon orange-icon">
+                    📋
+                </div>
+
+                <h3>
+                    Daily Work Log
+                </h3>
+
+                <p>
+                    Employees can record completed work,
+                    achievements, challenges and their next plan.
+                </p>
+
+                <a href="/daily-log">
+                    View Work Log →
+                </a>
+
+            </div>
+
+
+            <!-- FEATURE 5 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon pink-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Productivity Analytics
+                </h3>
+
+                <p>
+                    Analyze working hours, task completion,
+                    focus time and productivity percentage.
+                </p>
+
+                <a href="/productivity">
+                    View Analytics →
+                </a>
+
+            </div>
+
+
+            <!-- FEATURE 6 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon cyan-icon">
+                    👨‍💼
+                </div>
+
+                <h3>
+                    Manager Dashboard
+                </h3>
+
+                <p>
+                    Managers can monitor employee performance,
+                    working hours, tasks and productivity reports.
+                </p>
+
+                <a href="/dashboard">
+                    Manager View →
+                </a>
+
+            </div>
+
+
+            <!-- FEATURE 7 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    AI Productivity Assistant
+                </h3>
+
+                <p>
+                    Get intelligent productivity suggestions
+                    based on work patterns and daily performance.
+                </p>
+
+                <a href="/productivity">
+                    Get Insights →
+                </a>
+
+            </div>
+
+
+            <!-- FEATURE 8 -->
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue-icon">
+                    🔔
+                </div>
+
+                <h3>
+                    Smart Notifications
+                </h3>
+
+                <p>
+                    Receive reminders for tasks, work sessions,
+                    breaks and important productivity updates.
+                </p>
+
+                <a href="/notifications">
+                    View Notifications →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section
+        id="about"
+        class="about-section">
+
+        <div class="about-content">
+
+            <div class="badge">
+                💡 About DevSync
+            </div>
+
+            <h2>
+                A smarter way to
+                <span>manage work.</span>
+            </h2>
+
+            <p>
+                DevSync is designed to help organizations
+                understand how employees spend their working
+                time and how efficiently daily tasks are completed.
+            </p>
+
+            <p>
+                Employees can track their work sessions,
+                manage tasks, record daily activities and
+                monitor their productivity.
+            </p>
+
+            <p>
+                Managers get a centralized view of employee
+                performance and productivity, helping them
+                make better decisions using work data.
+            </p>
+
+
+            <div class="check-list">
+
+                <div>
+                    ✓ Employee work time tracking
+                </div>
+
+                <div>
+                    ✓ Task and activity monitoring
+                </div>
+
+                <div>
+                    ✓ Break and focus time tracking
+                </div>
+
+                <div>
+                    ✓ Productivity analytics
+                </div>
+
+                <div>
+                    ✓ Manager performance dashboard
+                </div>
+
+                <div>
+                    ✓ AI-powered productivity insights
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CODE / SYSTEM PREVIEW -->
+
+        <div class="about-box">
+
+            <div class="code-window">
+
+                <div class="code-header">
+
+                    <span>
+                        DevSync Productivity
+                    </span>
+
+                    <span>
+                        ● ● ●
+                    </span>
+
+                </div>
+
+
+                <pre>
+employee = {
+
+    "name": "Employee",
+
+    "work_hours": 7.5,
+
+    "tasks_completed": 8,
+
+    "break_time": 35,
+
+    "productivity": 82
+
+}
+
+manager.monitor(employee)
+                </pre>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta-section">
+
+        <h2>
+            Ready to work
+            <span>smarter?</span>
+        </h2>
+
+        <p>
+            Start tracking work, tasks and productivity
+            with DevSync.
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="openRegister()">
+
+            Create Free Account →
+
+        </button>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+
+            <span>&lt;/&gt;</span>
+            DevSync
+
+        </div>
+
+        <p>
+            Employee Work Monitoring &
+            Productivity System
+        </p>
+
+        <div class="footer-bottom">
+
+            © 2026 DevSync.
+            All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= LOGIN MODAL ================= -->
+
+    <div
+        id="loginModal"
+        class="modal">
+
+        <div class="modal-box">
+
+            <button
+                class="close"
+                onclick="closeLogin()">
+
+                ×
+
+            </button>
+
+
+            <div class="modal-logo">
+                &lt;/&gt;
+            </div>
+
+            <h2>
+                Welcome back
+            </h2>
+
+            <p>
+                Login to your DevSync account
+            </p>
+
+
+            <form id="loginForm">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="primary-btn full">
+
+                    Login
+
+                </button>
+
+            </form>
+
+
+            <div id="loginMessage"></div>
+
+
+            <p class="switch">
+
+                Don't have an account?
+
+                <a onclick="switchToRegister()">
+                    Create account
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= REGISTER MODAL ================= -->
+
+    <div
+        id="registerModal"
+        class="modal">
+
+        <div class="modal-box">
+
+            <button
+                class="close"
+                onclick="closeRegister()">
+
+                ×
+
+            </button>
+
+
+            <div class="modal-logo">
+                &lt;/&gt;
+            </div>
+
+
+            <h2>
+                Create account
+            </h2>
+
+            <p>
+                Start managing your work with DevSync
+            </p>
+
+
+            <form id="registerForm">
+
+                <label>
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Enter username"
+                    required
+                >
+
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="primary-btn full">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+
+            <div id="registerMessage"></div>
+
+
+            <p class="switch">
+
+                Already have an account?
+
+                <a onclick="switchToLogin()">
+                    Login
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SCRIPT ================= -->
+
+     <script src="/static/script.js?v=2"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        My Tasks - DevSync
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/tasks.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ===================================================== -->
+
+    <aside class="sidebar">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                D
+            </div>
+
+
+            <div>
+
+                <h2>
+                    DevSync
+                </h2>
+
+                <span>
+                    Employee Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================= -->
+
+        <nav>
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="/dashboard"
+                class="nav-item">
+
+                <span>
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- MY TASKS -->
+
+            <a
+                href="/tasks"
+                class="nav-item active">
+
+                <span>
+                    ✅
+                </span>
+
+                <span>
+                    My Tasks
+                </span>
+
+            </a>
+
+
+
+            <!-- WORK SESSIONS -->
+
+            <a
+                href="/work-sessions"
+                class="nav-item">
+
+                <span>
+                    ⏱️
+                </span>
+
+                <span>
+                    Work Sessions
+                </span>
+
+            </a>
+
+
+
+            <!-- DAILY LOG -->
+
+            <a
+                href="/daily-log"
+                class="nav-item">
+
+                <span>
+                    📝
+                </span>
+
+                <span>
+                    Daily Log
+                </span>
+
+            </a>
+
+
+
+            <!-- PRODUCTIVITY -->
+
+            <a
+                href="/productivity"
+                class="nav-item">
+
+                <span>
+                    📊
+                </span>
+
+                <span>
+                    Productivity
+                </span>
+
+            </a>
+
+
+
+            <!-- NOTIFICATIONS -->
+
+            <a
+                href="/notifications"
+                class="nav-item">
+
+                <span>
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =================================================
+             BOTTOM NAVIGATION
+        ================================================= -->
+
+        <div class="sidebar-bottom">
+
+
+            <!-- SETTINGS -->
+
+            <a
+                href="/settings"
+                class="nav-item">
+
+                <span>
+                    ⚙️
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+
+            <!-- LOGOUT -->
+
+            <button
+                type="button"
+                class="logout-btn"
+                onclick="logout()">
+
+                <span>
+                    🚪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ===================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================= -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1>
+                    My Tasks
+                </h1>
+
+                <p>
+                    Manage and track your daily work
+                </p>
+
+            </div>
+
+
+
+            <!-- PROFILE -->
+
+            <div class="profile">
+
+
+                <!-- NOTIFICATION -->
+
+                <div class="notification">
+
+                    🔔
+
+                    <span
+                        class="notification-dot">
+                    </span>
+
+                </div>
+
+
+
+                <!-- AVATAR -->
+
+                <div
+                    class="avatar"
+                    id="avatar">
+
+                    S
+
+                </div>
+
+
+
+                <!-- USER -->
+
+                <div>
+
+                    <strong id="username">
+                        Employee
+                    </strong>
+
+                    <small>
+                        Employee
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             SUMMARY
+        ================================================= -->
+
+        <section class="summary-grid">
+
+
+            <!-- TOTAL TASKS -->
+
+            <div class="summary-card">
+
+
+                <div class="summary-icon">
+                    📋
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Total Tasks
+                    </span>
+
+                    <h2 id="totalTasks">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IN PROGRESS -->
+
+            <div class="summary-card">
+
+
+                <div class="summary-icon">
+                    ⏳
+                </div>
+
+
+                <div>
+
+                    <span>
+                        In Progress
+                    </span>
+
+                    <h2 id="progressTasks">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- COMPLETED -->
+
+            <div class="summary-card">
+
+
+                <div class="summary-icon">
+                    ✅
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Completed
+                    </span>
+
+                    <h2 id="completedTasks">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- COMPLETION RATE -->
+
+            <div class="summary-card">
+
+
+                <div class="summary-icon">
+                    ⚡
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Completion Rate
+                    </span>
+
+                    <h2 id="completionRate">
+                        0%
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             TASK CONTAINER
+        ================================================= -->
+
+        <section class="task-container">
+
+
+            <!-- TASK HEADER -->
+
+            <div class="task-header">
+
+
+                <div>
+
+                    <h2>
+                        Today's Tasks
+                    </h2>
+
+                    <p>
+                        Track your assigned work
+                    </p>
+
+                </div>
+
+
+
+                <!-- ADD TASK -->
+
+                <button
+                    type="button"
+                    class="add-btn"
+                    onclick="openTaskModal()">
+
+                    + Add Task
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTERS
+            ================================================= -->
+
+            <div class="filters">
+
+
+                <!-- ALL -->
+
+                <button
+                    type="button"
+                    class="filter active"
+                    onclick="filterTasks('all', this)">
+
+                    All
+
+                </button>
+
+
+
+                <!-- PENDING -->
+
+                <button
+                    type="button"
+                    class="filter"
+                    onclick="filterTasks('pending', this)">
+
+                    Pending
+
+                </button>
+
+
+
+                <!-- IN PROGRESS -->
+
+                <button
+                    type="button"
+                    class="filter"
+                    onclick="filterTasks('progress', this)">
+
+                    In Progress
+
+                </button>
+
+
+
+                <!-- COMPLETED -->
+
+                <button
+                    type="button"
+                    class="filter"
+                    onclick="filterTasks('completed', this)">
+
+                    Completed
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- TASK LIST -->
+
+            <div
+                id="taskList"
+                class="task-list">
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         ADD TASK MODAL
+    ===================================================== -->
+
+    <div
+        class="modal"
+        id="taskModal">
+
+
+        <div class="modal-box">
+
+
+            <!-- CLOSE -->
+
+            <button
+                type="button"
+                class="close"
+                onclick="closeTaskModal()">
+
+                ×
+
+            </button>
+
+
+
+            <h2>
+                Add New Task
+            </h2>
+
+
+            <p>
+                Create a task for your workday.
+            </p>
+
+
+
+            <!-- TASK TITLE -->
+
+            <label>
+                Task Title
+            </label>
+
+
+            <input
+                type="text"
+                id="taskTitle"
+                placeholder="Enter task title">
+
+
+
+            <!-- DESCRIPTION -->
+
+            <label>
+                Description
+            </label>
+
+
+            <textarea
+                id="taskDescription"
+                placeholder="Describe your task..."></textarea>
+
+
+
+            <!-- PRIORITY -->
+
+            <label>
+                Priority
+            </label>
+
+
+            <select id="taskPriority">
+
+
+                <option value="Low">
+                    Low
+                </option>
+
+
+                <option
+                    value="Medium"
+                    selected>
+
+                    Medium
+
+                </option>
+
+
+                <option value="High">
+                    High
+                </option>
+
+
+            </select>
+
+
+
+            <!-- ESTIMATED TIME -->
+
+            <label>
+                Estimated Time
+            </label>
+
+
+            <select id="taskTime">
+
+
+                <option value="30 min">
+                    30 minutes
+                </option>
+
+
+                <option value="1 hour">
+                    1 hour
+                </option>
+
+
+                <option value="2 hours">
+                    2 hours
+                </option>
+
+
+                <option value="3 hours">
+                    3 hours
+                </option>
+
+
+                <option value="4+ hours">
+                    4+ hours
+                </option>
+
+
+            </select>
+
+
+
+            <!-- CREATE TASK -->
+
+            <button
+                type="button"
+                class="create-btn"
+                onclick="addTask()">
+
+                Create Task
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script src="/static/tasks.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevSync - Manager Dashboard</title>
+
+    <link rel="stylesheet" href="/static/manager.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <div class="sidebar">
+
+        <h2>DevSync</h2>
+
+        <p class="role">Manager Panel</p>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/tasks">Tasks</a>
+
+        <a href="/work-sessions">Work Sessions</a>
+
+        <a href="/daily-log">Daily Log</a>
+
+        <a href="/productivity">Productivity</a>
+
+        <a href="/manager" class="active">
+            Manager Dashboard
+        </a>
+
+        <a href="/notifications">Notifications</a>
+
+        <a href="/settings">Settings</a>
+
+    </div>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div class="main">
+
+        <!-- TOP BAR -->
+
+        <div class="topbar">
+
+            <div>
+                <h1>Manager Dashboard</h1>
+
+                <p>
+                    Monitor employee work and productivity
+                </p>
+            </div>
+
+            <button onclick="loadDashboard()">
+                Refresh
+            </button>
+
+        </div>
+
+
+        <!-- ================= SUMMARY CARDS ================= -->
+
+        <div class="cards">
+
+            <!-- Total Employees -->
+
+            <div class="card">
+                <h3>Total Employees</h3>
+
+                <p id="totalEmployees">
+                    0
+                </p>
+            </div>
+
+
+            <!-- Total Tasks -->
+
+            <div class="card">
+                <h3>Total Tasks</h3>
+
+                <p id="totalTasks">
+                    0
+                </p>
+            </div>
+
+
+            <!-- Completed Tasks -->
+
+            <div class="card">
+                <h3>Completed Tasks</h3>
+
+                <p id="completedTasks">
+                    0
+                </p>
+            </div>
+
+
+            <!-- In Progress -->
+
+            <div class="card">
+                <h3>In Progress</h3>
+
+                <p id="inProgressTasks">
+                    0
+                </p>
+            </div>
+
+
+            <!-- Pending -->
+
+            <div class="card">
+                <h3>Pending Tasks</h3>
+
+                <p id="pendingTasks">
+                    0
+                </p>
+            </div>
+
+
+            <!-- Working Hours -->
+
+            <div class="card">
+                <h3>Working Hours</h3>
+
+                <p id="workingHours">
+                    0h 0m
+                </p>
+            </div>
+
+
+            <!-- Average Productivity -->
+
+            <div class="card">
+                <h3>Average Productivity</h3>
+
+                <p id="averageProductivity">
+                    0%
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= EMPLOYEE PERFORMANCE ================= -->
+
+        <div class="employee-section">
+
+            <h2>
+                Employee Performance
+            </h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Employee</th>
+
+                            <th>Email</th>
+
+                            <th>Total Tasks</th>
+
+                            <th>Completed</th>
+
+                            <th>In Progress</th>
+
+                            <th>Pending</th>
+
+                            <th>Working Hours</th>
+
+                            <th>Productivity</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="employeeTable">
+
+                        <tr>
+
+                            <td colspan="9">
+                                Loading employee data...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= MESSAGE ================= -->
+
+        <div id="message"></div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="/static/manager.js?v=3"></script>
+
+</body>
+
+</html>
