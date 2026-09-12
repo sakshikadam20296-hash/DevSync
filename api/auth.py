@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from passlib.context import CryptContext
 from jose import jwt
+import hashlib
+import secrets
 
 from database import get_db
 from models.user import User
@@ -11,12 +12,6 @@ from models.user import User
 router = APIRouter(
     prefix="/auth",
     tags=["Authentication"]
-)
-
-
-pwd_context = CryptContext(
-    schemes=["bcrypt"],
-    deprecated="auto"
 )
 
 
@@ -36,6 +31,46 @@ class LoginRequest(BaseModel):
     password: str
 
 
+def hash_password(password: str) -> str:
+
+    salt = secrets.token_hex(16)
+
+    password_hash = hashlib.pbkdf2_hmac(
+        "sha256",
+        password.encode("utf-8"),
+        salt.encode("utf-8"),
+        100000
+    ).hex()
+
+    return f"{salt}:{password_hash}"
+
+
+def verify_password(
+    password: str,
+    stored_password: str
+) -> bool:
+
+    try:
+
+        salt, stored_hash = stored_password.split(":")
+
+        password_hash = hashlib.pbkdf2_hmac(
+            "sha256",
+            password.encode("utf-8"),
+            salt.encode("utf-8"),
+            100000
+        ).hex()
+
+        return secrets.compare_digest(
+            password_hash,
+            stored_hash
+        )
+
+    except Exception:
+
+        return False
+
+
 @router.post("/register")
 def register(
     user_data: RegisterRequest,
@@ -47,22 +82,20 @@ def register(
     ).first()
 
     if existing_user:
+
         raise HTTPException(
             status_code=400,
             detail="Email already registered"
         )
-
 
     role = user_data.role
 
     if role not in ["Employee", "Manager"]:
         role = "Employee"
 
-
-    hashed_password = pwd_context.hash(
+    hashed_password = hash_password(
         user_data.password
     )
-
 
     new_user = User(
         username=user_data.username,
@@ -71,11 +104,9 @@ def register(
         role=role
     )
 
-
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-
 
     return {
         "message": "User registered successfully",
@@ -95,7 +126,6 @@ def login(
         User.email == login_data.email
     ).first()
 
-
     if not user:
 
         raise HTTPException(
@@ -103,8 +133,7 @@ def login(
             detail="Invalid email or password"
         )
 
-
-    if not pwd_context.verify(
+    if not verify_password(
         login_data.password,
         user.password
     ):
@@ -114,20 +143,17 @@ def login(
             detail="Invalid email or password"
         )
 
-
     token_data = {
         "sub": str(user.id),
         "email": user.email,
         "role": user.role
     }
 
-
     access_token = jwt.encode(
         token_data,
         SECRET_KEY,
         algorithm=ALGORITHM
     )
-
 
     return {
         "message": "Login successful",
